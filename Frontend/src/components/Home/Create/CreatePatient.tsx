@@ -39,7 +39,6 @@ const CreatePatient = ({ trigger }: CreatePatientProps) => {
         },
       })
       .then((response) => {
-        console.log(response);
         setIsOpen(false);
         saveToLocalStorage(response.data);
         location.reload();

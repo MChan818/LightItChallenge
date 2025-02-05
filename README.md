@@ -1,6 +1,7 @@
 <h1>Backend</h1>
 
 ### Crear un archivo .env en Backend con los siguientes parámetros:
+## Llenar con cuenta de mailtrap
 
 ```
 PORT=3000
@@ -11,9 +12,9 @@ DATABASE_PASSWORD=1234
 DATABASE_HOST='localhost'
 
 MAILTRAP_HOST='sandbox.smtp.mailtrap.io'
-MAILTRAP_USER='5e46e9239db79d'
-MAILTRAP_PASS='2c62e407b73ed8'
-MAILTRAP_RECEIVER='1bc0b06a35-802bd5@inbox.mailtrap.io'
+MAILTRAP_USER=
+MAILTRAP_PASS=
+MAILTRAP_RECEIVER=
 ```
 
 ### Crear un archivo .env en Frontend con los siguientes parámetros:

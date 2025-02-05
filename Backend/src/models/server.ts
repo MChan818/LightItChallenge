@@ -42,12 +42,19 @@ class Server {
 
 			console.log("🚀 Database online.");
 		} catch (error) {
+			console.log(error);
 			throw new Error(error as string);
 		}
 	}
 
 	middlewares() {
-		this.app.use(cors());
+		this.app.use(
+			cors({
+				origin: "*",
+				methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+				allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+			}),
+		);
 		this.app.use(express.json());
 		this.app.use(express.static("public"));
 	}

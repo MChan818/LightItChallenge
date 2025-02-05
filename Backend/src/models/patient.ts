@@ -20,7 +20,7 @@ const Patient = db.define("Patient", {
 		allowNull: false,
 	},
 	photo: {
-		type: DataTypes.DATE,
+		type: DataTypes.TEXT,
 		allowNull: true,
 	},
 });

@@ -6,7 +6,6 @@ import sendEmail from "../services/email";
 
 export const getPatients = async (req: Request, res: Response) => {
 	const patients = await Patient.findAll();
-
 	res.json(patients);
 };
 
@@ -33,11 +32,22 @@ export const createPatient = async (req: Request<{}, {}, PatientType>, res: Resp
 		}
 
 		const patient = Patient.build(body);
-		await patient.save();
-		sendEmail();
+		await patient.save().catch((error) => {
+			console.error(error);
+			return res.status(500).json({
+				msg: "An error has ocurred, please contact the administrator",
+			});
+		});
+		setImmediate(async () => {
+			try {
+				await sendEmail();
+			} catch (err) {
+				console.error("Failed to send email:", err);
+			}
+		});
 		res.json(patient);
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		res.status(500).json({ msg: "An error has ocurred, please contact the administrator" });
 	}
 };
